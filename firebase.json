@@ -1,7 +1,6 @@
 {
   "hosting": {
-    "site": "muhamadfathulazis",
-    "public": "build/web",
+    "public": "y",
     "ignore": [
       "firebase.json",
       "**/.*",
