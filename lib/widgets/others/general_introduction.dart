@@ -1,7 +1,9 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:personal_website/styles/colors.dart';
 import 'package:personal_website/styles/styles.dart';
+import 'package:personal_website/utils/app_utils.dart';
 import 'package:personal_website/widgets/buttons/primary_button.dart';
 
 class GeneralIntroduction extends StatelessWidget {
@@ -12,7 +14,7 @@ class GeneralIntroduction extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        verticalSpace(MediaQuery.of(context).size.height / 5),
+        verticalSpace(MediaQuery.of(context).size.height / 7),
         Text(
           'Hi, my name is',
           style: TextStyles.firaCodeText.copyWith(fontSize: 20.h),
@@ -43,10 +45,35 @@ class GeneralIntroduction extends StatelessWidget {
               : MediaQuery.of(context).size.width / 2.8,
           child: RichText(
             text: TextSpan(
-              text:
-                  "🎓 Final-year Information Science student at Dayananda Sagar College of Engineering,        📱 Passionate Flutter Developer with real-world project experience in mobile & web apps.",
               style: TextStyles.heeboText
                   .copyWith(fontSize: 20.h, color: AppColor.textColor2),
+              children: [
+                const TextSpan(
+                  text:
+                      "🎓 Final-year Information Science student at Dayananda Sagar College of Engineering,\n📱 Passionate Flutter Developer with real-world project experience in mobile & web apps.\n",
+                ),
+                const TextSpan(
+                  text: "💻 This web application is built using Flutter. ",
+                ),
+                TextSpan(
+                  text: " Check it out",
+                  style: TextStyles.heeboText.copyWith(
+                    fontSize: 20.h,
+                    color: AppColor.primaryColor,
+                    fontWeight: FontWeight.w600,
+                    decoration: TextDecoration.underline,
+                    decorationColor: AppColor.primaryColor,
+                  ),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () {
+                      AppUtils.openLink(
+                          'https://github.com/nihark023/personal-website-main');
+                    },
+                ),
+                const TextSpan(
+                  text: " on GitHub!",
+                ),
+              ],
             ),
           ),
         ),
@@ -58,7 +85,10 @@ class GeneralIntroduction extends StatelessWidget {
                 : MediaQuery.of(context).size.width / 1.7,
           ),
           child: ButtonPrimary(
-            onTap: () {},
+            onTap: () {
+              AppUtils.openLink(
+                  'https://drive.google.com/file/d/1WcJ9XC8gingCmuj6o75l2SBuL-LqGpXX/view?usp=sharing');
+            },
             height: 60.h,
             isOutline: true,
             label: 'Check out my Resume!',
